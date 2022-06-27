@@ -1,0 +1,37 @@
+useDynLib(RdeGlmLassoGam, .registration = TRUE)
+import("Rcpp", "RcppArmadillo", "mgcv")
+importFrom("stats", ".getXlevels", "coef", "dbinom", "glm", "qpois", "dpois",
+               "glm.control", "glm.fit", "integrate", "is.empty.model",
+               "mahalanobis", "median", "model.matrix", "model.offset",
+               "model.response", "model.weights", "naresid", "nobs",
+               "pnorm", "predict", "printCoefmat", "qbinom", "runif",
+               "summary.glm", "symnum")
+importFrom("utils", "str")
+importFrom("lassoshooting", "lassoshooting")
+importFrom("stats", "binomial", "cov2cor", "mad", "poisson", "ppois",
+                "quantile")
+importFrom("utils", "tail")
+importFrom("CompQuadForm", "davies") 
+importFrom("robustbase", "covMcd","lmrob.fit", "lmrob.control","Qn")
+importFrom("cellWise", "DDC")
+importFrom("glmnet", "glmnet")
+importFrom("tidyr", "spread")
+importFrom("Matrix", "Diagonal", "crossprod")
+
+export(dDBinom)
+export(pDBinom)
+export(qDBinom)
+export(rDBinom)
+export(dDPois)
+export(pDPois)
+export(qDPois)
+export(rDPois)
+export(RDE)
+export(DispersionTest)
+export(glmRDENoZ)
+export(CalcAMSE)
+export(CalcTuningParam)
+export(EBICGam)
+export(EBICBet)
+export(RBICGam)
+export(RBICBet)

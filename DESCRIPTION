@@ -1,0 +1,15 @@
+Package: RdeGlmLassoGam
+Type: Package
+Title: Robust Double Exponential Estimator
+Version: 1.0.0
+Description: This package provides a robust estimator for the parameters in the double exponential family, the so-called Robust Double Exponential (RDE) Estimator. One can use (a combination of) Generalised Linear Models, Generalised Penalized Linear Models or Generalised Additive Models.
+Depends: Rcpp (>= 0.9.13), RcppArmadillo (>= 0.3.4.4) , mgcv (>=
+        1.7-20)
+LinkingTo: Rcpp, RcppArmadillo
+Imports: CompQuadForm, Matrix, robustbase, MASS, stats, utils,
+        cellWise, lassoshooting, glmnet, tidyr
+License: GPL (>= 2)
+LazyLoad: yes
+Encoding: UTF-8
+NeedsCompilation: yes
+Packaged: 2021-10-27 12:55:58 UTC; u0105404
