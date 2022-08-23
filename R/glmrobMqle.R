@@ -51,8 +51,47 @@ robXweights <- function(wts, X, intercept=TRUE) {
 }
 
 
-##' @param intercept logical, if true, X[,] has an intercept column which should
-##'                  not be used for rob.wts
+# Description 
+# glmrobMqle is used by the function glmrob, to obtain a robust Mallow's quasi-
+# likelihood estimator. 
+
+# Arguments 
+##' @param X: model matrix 
+##' @param y: response vector
+##' @param weights: an optional vector of weights to be used in the fitting process.
+##' @param start:    starting values for the parameters in the linear predictor. Note 
+#           that specifying start has somewhat different meaning for the 
+#           different methods. Notably, for "MT", this skips the expensive 
+#           computation of initial estimates via sub samples, but needs to be 
+#           robust itself.
+##' @param offset: this can be used to specify an a priori known component to be included
+#         in the linear predictor during fitting.
+##' @param family: a description of the error distribution and link function to be used 
+#         in the model. This can be a character string naming a family function, 
+#         a family function or the result of a call to a family function. 
+##' @param weights.on.x: a character string (can be abbreviated), a function or list 
+#               (see below), or a numeric vector of length n, specifying how 
+#               points (potential outliers) in x-space are downweighted. If 
+#               "hat", weights on the design of the form sqrt{1-h_{ii}} are used, 
+#               where h_{ii} are the diagonal elements of the hat matrix. 
+#               If "robCov", weights based on the robust Mahalanobis distance of 
+#               the design matrix (intercept excluded) are used where the 
+#               covariance matrix and the centre is estimated by cov.rob from 
+#               the package MASS. Similarly, if "covMcd", robust weights are 
+#               computed using covMcd. The default is "none".
+#               If weights.on.x is a function, it is called with arguments 
+#               (X, intercept) and must return an n-vector of non-negative 
+#               weights.
+#               If it is a list, it must be of length one, and as element 
+#               contain a function much like covMcd() or cov.rob() 
+#               (package MASS), which computes multivariate location and 
+#               "scatter" of a data matrix X.
+##' @param control: a list of parameters for controlling the fitting process. 
+#          See the documentation for glmrobMqle.control for details.
+##' @param intercept: logical indicating whether an intercept should be fitted
+##' @param trace: logical (or integer) indicating if intermediate results should be 
+#        printed; defaults to 0 (the same as FALSE).
+#
 glmrobMqle <-
   function(X, y, weights = NULL, start = NULL, offset = NULL,
            family, weights.on.x = "none",
